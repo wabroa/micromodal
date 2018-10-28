@@ -4,7 +4,7 @@
 	(global.MicroModal = factory());
 }(this, (function () { 'use strict';
 
-var version = "0.3.1";
+var version = "0.3.2";
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -121,7 +121,9 @@ var MicroModal = function () {
         this.modal.setAttribute('aria-hidden', 'true');
         this.removeEventListeners();
         this.scrollBehaviour('enable');
-        this.activeElement.focus();
+        if (this.activeElement) {
+          this.activeElement.focus();
+        }
         this.config.onClose(this.modal);
 
         if (this.config.awaitCloseAnimation) {
